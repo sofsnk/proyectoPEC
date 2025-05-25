@@ -7,8 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{ route('home') }}">Información</a>
-    <a href="{{ route('centros.acopio') }}">Centros de Acopio</a>
-    <a href="{{ route('donacion') }}">Donar un dispositivo</a>
+    @include('layouts.nav')
+    <main>
+
+    </main>
+    @include('layouts.footer')
 </body>
 </html>

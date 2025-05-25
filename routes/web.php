@@ -14,6 +14,7 @@ Route::view('/donación', 'donacion.donar')->name('donacion');
 //Administradores
 Route::view('/admin/login', 'auth.loginAdmin')->name('login.admin');
 Route::view('/admin/register', 'auth.registerAdmin')->name('register.admin');
-Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware(AuthAdmin::class);
 
-
+Route::middleware(AuthAdmin::class)->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+});
