@@ -18,7 +18,7 @@ class AuthAdmin
         $token = session()->get('tokenAdmin');
 
         if (!$token) {
-            return redirect()->route('login.admin');
+            return redirect()->route('admin.login');
         }
         
         return $next($request);
