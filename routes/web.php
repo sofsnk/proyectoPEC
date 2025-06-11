@@ -18,7 +18,7 @@ Route::view('/donaciones/historial', 'donacion.historial')->name('donacion.histo
 Route::view('/admin/login', 'admin.auth.login')->name('admin.login');
 Route::view('/admin/register', 'admin.auth.register')->name('admin.register');
 
-Route::prefix('/admin')->middleware(AuthAdmin::class)->group(function () {
+Route::prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'inicio'])->name('admin.inicio');
     Route::get('/dispositivos', [AdminController::class, 'dispositivos'])->name('admin.dispositivos');
     Route::get('/donaciones', [AdminController::class, 'donaciones'])->name('admin.donaciones');
