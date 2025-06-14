@@ -10,8 +10,6 @@ class SessionController extends Controller
 {
     public function CreateSession($usuario) {
 
-        $usuario = $usuario['usuario'];
-
         $token = Str::random(60);
 
         session([
