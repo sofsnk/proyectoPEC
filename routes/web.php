@@ -6,7 +6,9 @@ use App\Http\Controllers\AdminDonacionesController;
 use App\Http\Controllers\AdminEstadisticasController;
 use App\Http\Controllers\AdminVentasController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DonacionesController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Routing\ResolvesRouteDependencies;
@@ -26,8 +28,13 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.user');
 Route::view('/register', 'auth.register')->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.user');
 
+//Cerrer sesion
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
 //Donar dispositivos
-Route::view('/donar dispositivo', 'donacion.donar')->name('donacion.donar');
+Route::view('/donar dispositivo', 'donacion.donar')->name('donacion');
+Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
+
 Route::view('/donaciones/historial', 'donacion.historial')->name('donacion.historial');
 
 //Administradores
