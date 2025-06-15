@@ -15,8 +15,8 @@
         <h1>Historial de donaciones</h1>
         @if (!empty($historial))
         @foreach ($historial as $donacion)
-        <h3>donacion: </h3>
-        <p>fecha: {{ $donacion['fecha_donacion'] }}</p>
+        <h3>id de donacion: {{$donacion['id_donacion']}}</h3>
+        <p>fecha de entrega: {{ $donacion['fecha_donacion'] }}</p>
         <p>estado: {{ $donacion['estado'] }}</p>
         <p>cantidad de dispositivos: {{ $donacion['cantidad_dispositivos'] }}</p>
         <h4>dispositivos: </h4>

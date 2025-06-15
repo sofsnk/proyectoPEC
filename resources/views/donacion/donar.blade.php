@@ -16,7 +16,12 @@
         @if (session('id_usuario'))
             <p>Nota: Los dispositivos que seran donados deben ser entrgegados personalmente a el CBTis 150, primero debe
                 generar una orden de donacion para poder pasar a entrgar los dispositivos</p>
+            <p>Presente el id de donacion para confirmar su donación</p>
+            <br>
             <form action="{{ route('donacion.user') }}" method="POST">
+                @if (session('mensaje'))
+                    <p>{{session('mensaje')}}</p>
+                @endif
                 @csrf
                 <label for="fecha_donacion">¿Cuando lo va a donar?</label>
                 <input type="date" name="fecha_donacion" id="fecha_donacion">
@@ -37,7 +42,7 @@
                         <input type="text" name="dispositivos[0][descripcion]" id="descripcion">
                         <br>
                         <label for="estado_fisico">Estado fisico: </label>
-                        <select name="dispositivos[0][estado]">
+                        <select name="dispositivos[0][estado_fisico]">
                             <option value="Nuevo">Nuevo</option>
                             <option value="Usado">Usado</option>
                             <option value="Reparable">Reparable</option>
@@ -86,7 +91,7 @@
         <input type="text" name="dispositivos[${dispositivoCount}][descripcion]">
         <br>
         <label for="estado_fisico">Estado fisico: </label>
-        <select name="dispositivos[${dispositivoCount}][estado]">
+        <select name="dispositivos[${dispositivoCount}][estado_fisico]">
             <option value="Nuevo">Nuevo</option>
             <option value="Usado">Usado</option>
             <option value="Reparable">Reparable</option>
