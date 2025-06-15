@@ -9,7 +9,7 @@ class GaleriaController extends Controller
 {
     public function index()
     {
-        $trabajos = Galeria::where('activo', '1')->get();
+        $trabajos = Galeria::with('enlaces', 'imagenes')->get();
 
         $primero = [];
         $segundo = [];
