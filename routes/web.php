@@ -34,6 +34,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 //Donar dispositivos
 Route::get('/donar dispositivo', [DonacionesController::class, 'index'])->name('donacion');
 Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
+Route::put('/donaciones/historial', [DonacionesController::class, 'cancelar'])->name('donacion.cancelar');
 
 Route::get('/donaciones/historial', [DonacionesController::class, 'historial'])->name('donacion.historial');
 

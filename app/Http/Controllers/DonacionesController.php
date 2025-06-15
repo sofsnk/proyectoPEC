@@ -25,6 +25,20 @@ class DonacionesController extends Controller
         return view('donacion.historial', compact('historial'));
     }
 
+    public function cancelar(Request $request)
+    {
+        $request->validate([
+            'id_donacion' => 'required|integer|min:1'
+        ]);
+
+        $donacion = Donacion::where('id_donacion', $request['id_donacion'])->first();
+        $donacion->update([
+            'estado' => 'Cancelada'
+        ]);
+
+        return redirect()->back();
+    }
+
     public function donacion(Request $request)
     {
         $request->validate([
