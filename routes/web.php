@@ -35,7 +35,8 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::view('/donar dispositivo', 'donacion.donar')->name('donacion');
 Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
 
-Route::view('/donaciones/historial', 'donacion.historial')->name('donacion.historial');
+Route::get('/donaciones/historial', [DonacionesController::class, 'historial'])->name('donacion.historial');
+
 
 //Administradores
 Route::prefix('/admin')->group(function () {
