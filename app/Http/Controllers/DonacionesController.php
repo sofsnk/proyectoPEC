@@ -14,7 +14,7 @@ class DonacionesController extends Controller
 
     public function historial()
     {
-        $historialData = Donacion::where('id_usuario',3 )->with('dispositivos.categoria')->get();
+        $historialData = Donacion::where('id_usuario', 3 )->with('dispositivos.categoria')->get();
         $historial = $historialData->toArray();
 
         return view('donacion.historial', compact('historial'));
