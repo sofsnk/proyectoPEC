@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Donacion;
 use Illuminate\Http\Request;
 
 class DonacionesController extends Controller
 {
+    public function index()
+    {
+        $categoriasData = Categoria::where('activo', 1)->get();
+        $categorias = $categoriasData->toArray();
+
+        return view('donacion.donar', compact('categorias'));
+    }
+
     public function donacion(Request $request)
     {
         dd($request);

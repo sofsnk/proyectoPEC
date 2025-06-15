@@ -24,4 +24,14 @@ class Galeria extends Model
         'activo'
     ];
     public $timestamps = false;
+
+    public function enlaces()
+    {
+        return $this->hasMany(Galeria_enlace::class, 'id_galeria');
+    }
+
+    public function imagenes()
+    {
+        return $this->hasMany(Galeria_imagen::class, 'id_galeria');
+    }
 }

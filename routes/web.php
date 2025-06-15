@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminDispositivosController;
-use App\Http\Controllers\AdminDonacionesController;
-use App\Http\Controllers\AdminEstadisticasController;
-use App\Http\Controllers\AdminVentasController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminDispositivosController;
+use App\Http\Controllers\Admin\AdminDonacionesController;
+use App\Http\Controllers\Admin\AdminEstadisticasController;
+use App\Http\Controllers\Admin\AdminVentasController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -32,7 +32,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 //Donar dispositivos
-Route::view('/donar dispositivo', 'donacion.donar')->name('donacion');
+Route::get('/donar dispositivo', [DonacionesController::class, 'index'])->name('donacion');
 Route::post('/donar dispositivo', [DonacionesController::class, 'donacion'])->name('donacion.user');
 
 Route::get('/donaciones/historial', [DonacionesController::class, 'historial'])->name('donacion.historial');
