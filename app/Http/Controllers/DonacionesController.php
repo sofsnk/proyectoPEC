@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Dispositivo;
 use App\Models\Donacion;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DonacionesController extends Controller
 {
@@ -41,7 +43,7 @@ class DonacionesController extends Controller
 
     public function donacion(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'fecha_donacion' => 'required|date',
             'dispositivos' => 'required|array|min:1',
             'dispositivos.*.nombre_dispositivo' => 'required|string',
@@ -52,31 +54,44 @@ class DonacionesController extends Controller
             'dispositivos.*.id_categoria' => 'required|integer|min:1',
         ]);
 
-        $fecha_actual = now()->toDate();
-        $fecha_donacion = $request['fecha_donacion'];
+        try {
+            return DB::transaction(function () use ($data) {
+                $fecha_donacion = $data['fecha_donacion'];
+                $dispositivos = $data['dispositivos'];
 
-        if ($fecha_donacion <= $fecha_actual) {
+                $this->verificarFecha($fecha_donacion);
+                $cantidad = $this->cantidadDispositivos($dispositivos);
+                $donacion = $this->crearDonacion(session('id_usuario'), $cantidad, $fecha_donacion);
+                $dispositivosCreate = $this->crearDispositivos($dispositivos, $donacion['id_donacion']);
+                
+                return redirect()->back()->with([
+                    'mensaje' => 'La donación se creó exitosamente tu id de donación es: ' . $donacion['id_donacion']
+                ]);
+            });
+        } catch (Exception  $e) {
+            $mensaje = $this->mensajeError($e);
             return redirect()->back()->with([
-                'mensaje' => 'La fecha no puede ser menor o igual a la fecha actual'
+                'mensaje' => $mensaje
             ]);
         }
-        $donacion = $this->crearDonacion(session('id_usuario'), $request['dispositivos'], $fecha_donacion);
-
-        if(empty($donacion))
-        {
-            return redirect()->back()->with([
-                'mensaje' => 'Error, no se pudo crear la donación'
-            ]);
-        }
-
-        return redirect()->back()->with([
-            'mensaje' => 'La donación se creó exitosamente tu id de donación es: '.$donacion['id_donacion']
-        ]
-        );
     }
 
-    private function crearDonacion($idUsuario, $dispositivos, $fecha) {
-        $cantidad = $this->cantidadDispositivos($dispositivos);
+    private function verificarFecha($fecha_donacion)
+    {
+        $fecha_actual = now()->toDateString();
+
+        if ($fecha_donacion <= $fecha_actual) {
+            throw new Exception('fecha');
+        }
+    }
+
+    private function cantidadDispositivos($dispositivos)
+    {
+        return count($dispositivos);
+    }
+
+    private function crearDonacion($idUsuario, $cantidad, $fecha)
+    {
 
         $donacion = Donacion::create([
             'fecha_donacion' => $fecha,
@@ -84,32 +99,15 @@ class DonacionesController extends Controller
             'id_usuario' => $idUsuario
         ]);
 
-        if($donacion){
-            $dispositivos = $this->crearDispositivos($dispositivos, $donacion['id_donacion']);
-            if(!empty($dispositivos))
-            {
-                return $donacion;
-            }
-            else {
-                $donacion->delete();
-            }
-        }
-    }
-
-    private function cantidadDispositivos($dispositivos)
-    {
-        $cantidad = 0;
-
-        foreach ($dispositivos as $dispositivo) {
-            $cantidad += 1;
+        if (!$donacion) {
+            throw new Exception("donacion");
         }
 
-        return $cantidad;
+        return $donacion;
     }
 
     private function crearDispositivos($dispositivos, $idDonacion)
     {
-        $dispositivosData = [];
         foreach ($dispositivos as $dispositivo) {
             $dispositivoCreate = Dispositivo::create([
                 'nombre_dispositivo' => $dispositivo['nombre_dispositivo'],
@@ -120,11 +118,33 @@ class DonacionesController extends Controller
                 'id_categoria' => $dispositivo['id_categoria'],
                 'id_donacion' => $idDonacion
             ]);
-            if(!empty($dispositivoCreate))
-            {
-                $dispositivosData[] = $dispositivoCreate;
+
+            if (!$dispositivoCreate) {
+                throw new Exception('dispositivos');
             }
+
+            $dispositivosData[] = $dispositivoCreate;
         }
+
         return $dispositivosData;
+    }
+
+    private function mensajeError(Exception $e)
+    {
+        $mensaje = $e->getMessage();
+
+        if (str_contains($mensaje, 'fecha')) {
+            return 'Error, la fecha no puede ser menor o igual a la fecha actual';
+        }
+
+        if (str_contains($mensaje, 'donacion')) {
+            return 'Error, no se pudo crear la donación';
+        }
+
+        if (str_contains($mensaje, 'dispositivos')) {
+            return 'Error, no se pudieron agregar los dispositivos';
+        }
+
+        return 'Ups, hubo un error inesperado';
     }
 }
