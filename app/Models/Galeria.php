@@ -18,10 +18,7 @@ class Galeria extends Model
         'progresion',
         'titulo',
         'descripcion',
-        'fecha_realizacion',
-        'enlaces',
-        'imagen',
-        'activo'
+        'fecha_realizacion'
     ];
     public $timestamps = false;
 
