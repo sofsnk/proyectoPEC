@@ -13,9 +13,7 @@ class Donacion extends Model
         'fecha_donacion',
         'estado',
         'cantidad_dispositivos',
-        'observaciones',
-        'id_usuario',
-        'activo'
+        'id_usuario'
     ];
     public $timestamps = false;
 
