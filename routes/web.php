@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DonacionesController;
 use App\Http\Controllers\GaleriaController;
+use App\Http\Controllers\ProyectosController;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Routing\ResolvesRouteDependencies;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ Route::view('/', 'index')->name('home');
 Route::view('/centros de acopio', 'centros_acopio')->name('centros');
 Route::view('/estadisticas', 'estadisticas')->name('estadisticas');
 Route::get('/galeria de imagenes', [GaleriaController::class, 'index'])->name('galeria');
+Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos');
 
 //Inicio de sesion
 Route::view('/login', 'auth.login')->name('login');

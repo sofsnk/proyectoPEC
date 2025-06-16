@@ -25,7 +25,6 @@ class GaleriaController extends Controller
                     break;
                 case '2':
                     $segundo[] = $trabajo;
-                    $semestres[] = $segundo; 
                     break;
                 case '3':
                     $tercero[] = $trabajo;
@@ -42,6 +41,6 @@ class GaleriaController extends Controller
             }
         }
  
-        return view('galeria', compact('primero', 'segundo', 'tercero', 'cuarto', 'quinto', 'sexto'));
+        return view('proyectos', compact('primero', 'segundo', 'tercero', 'cuarto', 'quinto', 'sexto'));
     }
 }
