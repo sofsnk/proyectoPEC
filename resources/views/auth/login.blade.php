@@ -24,6 +24,7 @@
                 <p>{{session('mensaje')}}</p>
             @endif
             <p>¿No tienes una cuenta? <a href="{{ route('register') }}">Crear cuenta</a></p>
+            <p><a href="{{ route('reset') }}">¿Olvidaste tu contraseña?</a></p>
         </form>
     </main>
     @include('layouts.footer')

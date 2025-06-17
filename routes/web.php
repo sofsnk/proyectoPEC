@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminVentasController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\DonacionesController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ProyectosController;
@@ -29,6 +30,12 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.user');
 //Crear cuenta
 Route::view('/register', 'auth.register')->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.user');
+
+//Actualizar contraseña
+Route::view('password/reset', 'auth.reset')->name('reset');
+Route::post('password/reset', [ResetPasswordController::class, 'sendMail'])->name('reset.send');
+Route::get('/password/reset/{email}/{token}', [ResetPasswordController::class, 'index'])->name('password');
+Route::post('/password/reset/update', [ResetPasswordController::class, 'updatePassword'])->name('reset.password');
 
 //Cerrer sesion
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
