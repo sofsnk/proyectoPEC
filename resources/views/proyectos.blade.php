@@ -12,7 +12,7 @@
 <body>
     @include('layouts.nav')
     <main>
-        <h1>Galeria de imagenes</h1>
+        <h1>Proyectos</h1>
         @if (!empty($primero))
             <h3>1er Semestre</h3>
             @foreach ($primero as $trabajo)
