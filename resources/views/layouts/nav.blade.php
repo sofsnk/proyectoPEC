@@ -6,11 +6,14 @@
         <li><a href="{{ route('galeria') }}">Galeria de Imagenes</a></li>
         <li><a href="{{ route('proyectos') }}">Proyectos</a></li>
         <li><a href="{{ route('donacion') }}">Donar un dispositivo</a></li>
-        <li><a href="{{ route('donacion.historial') }}">Historial de donaciones</a></li>
-        <li><a href="{{ route('login') }}">Iniciar sesion</a></li>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">Cerrar sesion</button>
-        </form>
+        @if (session('id_usuario'))
+            <li><a href="{{ route('donacion.historial') }}">Historial de donaciones</a></li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit">Cerrar sesion</button>
+            </form>
+        @else
+            <li><a href="{{ route('login') }}">Iniciar sesion</a></li>
+        @endif
     </ul>
 </nav>
