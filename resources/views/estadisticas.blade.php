@@ -10,7 +10,7 @@
 <body>
     @include('layouts.nav')
     <main>
-        <p>Tipos de Basura tecnológica:
+        <p><b>Tipos de Basura tecnológica:</b>
 Equipos de intercambio de temperatura (17%): Refrigeradores, aires acondicionados, bombas de calor.  
 Pantallas y monitores (8%): Televisores, monitores, laptops, tablets.  
 Equipos grandes (22%): Lavadoras, secadoras, paneles solares.  
@@ -20,7 +20,7 @@ Lámparas (3%): LED, fluorescentes, lámparas de descarga (Forti et al., 2023). 
 
 <br>
 
-        <p>Regulaciones Actuales
+        <p><b>Regulaciones Actuales:</b>
            Global: La Convención de Basilea actualizó sus anexos en 2022 para incluir definiciones más específicas de e-waste peligroso y 
            controlar mejor su comercio transfronterizo.  
            Unión Europea: La Directiva WEEE revisada en 2023 establece objetivos de recolección del 55% para 2025 y nuevos requisitos de trazabilidad digital.  
