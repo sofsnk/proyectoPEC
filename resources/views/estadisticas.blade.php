@@ -10,6 +10,16 @@
 <body>
     @include('layouts.nav')
     <main>
+        <p>Tipos de Basura tecnológica:
+Equipos de intercambio de temperatura (17%): Refrigeradores, aires acondicionados, bombas de calor.  
+Pantallas y monitores (8%): Televisores, monitores, laptops, tablets.  
+Equipos grandes (22%): Lavadoras, secadoras, paneles solares.  
+Equipos pequeños (35%): Aspiradoras, microondas, herramientas eléctricas, dispositivos médicos.  
+Equipos pequeños de TI (15%): Smartphones, GPS, computadoras, impresoras.  
+Lámparas (3%): LED, fluorescentes, lámparas de descarga (Forti et al., 2023).  </p>
+
+<br>
+
         <p>Regulaciones Actuales
            Global: La Convención de Basilea actualizó sus anexos en 2022 para incluir definiciones más específicas de e-waste peligroso y 
            controlar mejor su comercio transfronterizo.  
