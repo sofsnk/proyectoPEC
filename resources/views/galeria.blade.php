@@ -24,7 +24,7 @@
     <main class="container mx-auto px-4 py-8">
         <!-- Header -->
         <div class="text-center mb-12">
-            <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            <h1 class="text-5xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-4">
                 Galería de Trabajos
             </h1>
             <p class="text-gray-600 text-lg">Explora nuestros proyectos organizados por semestre</p>
