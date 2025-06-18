@@ -10,6 +10,19 @@
 <body>
     @include('layouts.nav')
     <main>
+        <p>Regulaciones Actuales
+           Global: La Convención de Basilea actualizó sus anexos en 2022 para incluir definiciones más específicas de e-waste peligroso y 
+           controlar mejor su comercio transfronterizo.  
+           Unión Europea: La Directiva WEEE revisada en 2023 establece objetivos de recolección del 55% para 2025 y nuevos requisitos de trazabilidad digital.  
+           Estados Unidos: 32 estados tienen ahora legislación de e-waste, con California liderando la implementación de "derecho a reparar" para dispositivos electrónicos.  
+           Mercados emergentes: India implementó reglas extendidas de responsabilidad del productor en 2023, mientras que Brasil lanzó su Sistema Nacional de Gestión de Residuos Electrónicos (Xavier et al., 2023).  </p>
+
+        <br>
+
+        <p>Cada mexicano genera en promedio 11.8 kilogramos de residuos electrónicos al año, algo así como el peso de una Smart TV de 50 pulgadas por persona, según el Monitor Global E-Waste 2024. El informe elaborado 
+            por el Instituto de las Naciones Unidas para la Formación Profesional y la Investigación (UNITAR, por sus siglas en inglés), establece que nuestro país genera anualmente 1.5 millones de toneladas de desechos tecnológicos, 
+            y sólo el 4 por ciento se recicla. De esta forma, México se coloca en el tercer lugar en el continente americano, en generación de basura electrónica, sólo por debajo de Brasil y Estados Unidos,
+            que producen 2.4 millones de toneladas y 7.2 millones de toneladas al año, respectivamente.</p>
 
     </main>
     @include('layouts.footer')
