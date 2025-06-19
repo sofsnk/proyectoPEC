@@ -242,13 +242,6 @@
         animation: fadeInDown 0.3s ease-out;
     }
     
-    /* Glassmorphism effect for mobile menu */
-    .glass-effect {
-        background: rgba(6, 78, 59, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-    
     /* Enhanced hover effects */
     .hover-lift:hover {
         transform: translateY(-2px);
