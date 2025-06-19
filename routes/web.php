@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDispositivosController;
 use App\Http\Controllers\Admin\AdminDonacionesController;
 use App\Http\Controllers\Admin\AdminEstadisticasController;
+use App\Http\Controllers\Admin\AdminProyectosController;
 use App\Http\Controllers\Admin\AdminVentasController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
@@ -60,4 +61,5 @@ Route::prefix('/admin')->group(function () {
     Route::get('/donaciones', [AdminDonacionesController::class, 'index'])->name('admin.donaciones');
     Route::get('/estadisticas', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticas');
     Route::get('/ventas', [AdminVentasController::class, 'index'])->name('admin.ventas');
+    Route::get('/proyectos', [AdminProyectosController::class, 'index'])->name('admin.proyectos');
 });
