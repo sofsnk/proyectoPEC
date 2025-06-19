@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDispositivosController;
 use App\Http\Controllers\Admin\AdminDonacionesController;
 use App\Http\Controllers\Admin\AdminEstadisticasController;
 use App\Http\Controllers\Admin\AdminVentasController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -30,6 +31,10 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.user');
 //Crear cuenta
 Route::view('/register', 'auth.register')->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.user');
+
+//Con google
+Route::get('auth/google', [GoogleController::class, 'redirectToGoole'])->name('auth.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 
 //Actualizar contraseña
 Route::view('password/reset', 'auth.reset')->name('reset');
